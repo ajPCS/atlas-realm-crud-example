@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="https://www.mongodb.com/assets/images/global/favicon.ico"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>My Todos List</title>
+  </head>
+
+  <body>
+    <!-- CODE SWIPED FROM:
+https://codesandbox.io/s/mongodb-charts-embedded-sdk-authenticated-realm-web-demo-78nc7n?file=/index.html:490-1630
+and 
+https://github.com/mongodb-developer/workshop/tree/realm-web-sdk 
+-->
+
+    <!-- Using this div to display the user ID -->
+    <div id="user" class="hidden">
+      <p>Logged in as <span id="emailLogged"></span></p>
+      <p>User ID: <span id="userid"></span></p>
+    </div>
+
+    <!-- Login section -->
+    <div id="login-page" class="login-page">
+      <!-- <h1 class="login-header">Log In</h1> -->
+      <div class="form">
+        <div class="login-form">
+          <h4 class="input-title">Email Address</h4>
+          <input
+            id="username"
+            type="text"
+            placeholder="Enter your email address"
+          />
+          <h4 class="input-title">Password</h4>
+          <input type="password" id="password" placeholder="Add a password" />
+          <!-- <p id="errorMessage">Authentication failed. If you are using the pre-built sample, 
+          please use one of the listed email addresses and use 'password' as the password.</p>-->
+          <!-- <button id="loginButton">Log In</button>  -->
+        </div>
+      </div>
+    </div>
+    <div>
+      <!-- Login anonymously -->
+      <input type="submit" value="LOGIN" onClick="login()" />
+      <!-- Finds todos in todos collection -->
+      <input type="submit" value="FIND" onClick="find_todos()" />
+    </div>
+
+    <form id="todoForm" onsubmit="return false;">
+      <label for="taskInput">Task:</label>
+      <input type="text" id="taskInput" name="task" required />
+      <button type="submit" onclick="insert_todo()">Add</button>
+      <button type="submit" onclick="toggle_todo()">Toggle</button>
+      <button type="submit" onclick="delete_todo()">Delete</button>
+    </form>
+
+    <!-- Using this div to show the todos -->
+    <div id="todos"></div>
+    <script src="https://unpkg.com/realm-web/dist/bundle.iife.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
